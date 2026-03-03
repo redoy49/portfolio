@@ -1,171 +1,36 @@
-// // Projects.jsx
-// import React from "react";
-// import roommateFinder from "../assets/images/project1.png";
-
-// const projects = [
-//   {
-//     name: "RoomMate Finder",
-//     image: roommateFinder,
-//     description:
-//       "A web platform where users can find and post roommate listings by location, lifestyle, and preferences.",
-//     liveLink: "https://roommatefinder.example.com",
-//     githubLink: "https://github.com/your-username/roommate-finder-client",
-//     techStack: ["React", "Firebase", "TailwindCSS", "Framer Motion"],
-//   },
-//   {
-//     name: "AI Content Generator",
-//     // image: "/assets/images/ai-content.png",
-//     description:
-//       "An AI-powered content generator using OpenAI API for creating blog posts, summaries, and more.",
-//     liveLink: "https://aicontent.example.com",
-//     githubLink: "https://github.com/your-username/ai-content-client",
-//     techStack: ["React", "OpenAI API", "TailwindCSS"],
-//   },
-//   {
-//     name: "Portfolio Website",
-//     // image: "/assets/images/portfolio.png",
-//     description:
-//       "A modern and responsive personal portfolio built with React, showcasing projects, skills, and resume.",
-//     liveLink: "https://yourportfolio.com",
-//     githubLink: "https://github.com/your-username/portfolio-client",
-//     techStack: ["React", "TailwindCSS", "Shadcn/UI", "EmailJS"],
-//   },
-// ];
-
-// const Projects = () => {
-//   return (
-//     <section
-//       id="projects"
-//       className="w-full max-w-[1600px] mx-auto px-5 lg:px-8 xl:px-[8%] py-20"
-//     >
-//       <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-//         My Projects
-//       </h2>
-
-//       <div className="space-y-12">
-//         {projects.map((project, index) => (
-//           <div
-//             key={index}
-//             className="flex flex-col lg:flex-row items-center gap-8 bg-white shadow-md border border-gray-200 rounded-xl overflow-hidden"
-//           >
-//             {/* Project Image */}
-//             <div className="w-full lg:w-1/2">
-//               <img
-//                 src={project.image}
-//                 alt={project.name}
-//                 className="w-full h-full aspect-video object-contain px-2 rounded-l-xl"
-//               />
-//             </div>
-
-//             {/* Project Info */}
-//             <div className="w-full lg:w-1/2 p-6 space-y-4 text-center lg:text-left">
-//               <h3 className="text-2xl font-semibold text-[#7081C8]">
-//                 {project.name}
-//               </h3>
-//               <p className="text-gray-700">{project.description}</p>
-
-//               {/* Tech Stack as badges */}
-//               <div className="flex flex-wrap gap-2 mt-2">
-//                 {project.techStack.map((tech, i) => (
-//                   <span
-//                     key={i}
-//                     className="text-xs font-medium bg-[#eef1ff] text-[#4a56a6] px-3 py-1 rounded-md border border-[#d1d9f9]"
-//                   >
-//                     {tech}
-//                   </span>
-//                 ))}
-//               </div>
-
-//               <div className="flex flex-wrap justify-center lg:justify-start gap-4 mt-4">
-//                 <a
-//                   href={project.liveLink}
-//                   target="_blank"
-//                   rel="noopener noreferrer"
-//                   className="bg-[#7081C8] hover:bg-[#5a6bb5] text-white px-4 py-2 rounded-full font-medium transition"
-//                 >
-//                   Live Site
-//                 </a>
-//                 <a
-//                   href={project.githubLink}
-//                   target="_blank"
-//                   rel="noopener noreferrer"
-//                   className="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-full font-medium transition"
-//                 >
-//                   GitHub Code
-//                 </a>
-//                 <button className="border border-[#7081C8] text-[#7081C8] hover:bg-[#7081C8] hover:text-white px-4 py-2 rounded-full transition">
-//                   View Details
-//                 </button>
-//               </div>
-//             </div>
-//           </div>
-//         ))}
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Projects;
-
 // Projects.jsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import roommateFinder from "../assets/images/project1.png";
-import foodExpiryTracker from "../assets/images/project3.png";
-import freshFarmers from "../assets/images/project4.png";
-import { 
-  SiReact, SiFirebase, SiTailwindcss, SiFramer, 
-  SiOpenai, SiShadcnui 
-} from "react-icons/si";
+import { supabase } from "../lib/supabase";
 import { FaLink } from "react-icons/fa";
- 
-const projects = [
-  {
-    id: "roommate-finder",
-    name: "RoomMate Finder",
-    image: roommateFinder,
-    description:
-      "A web app to post or find roommate listings based on location, lifestyle, and preferences. Includes filters, real-time updates, and a user-friendly interface for easy roommate discovery and connection.",
-    liveLink: "https://roommate-finder-e1587.web.app/",
-    githubLink: "https://github.com/redoy49/roommate-finder",
-    techStack: [
-      { name: "React", icon: <SiReact color="#61DAFB" /> },
-      { name: "Firebase", icon: <SiFirebase color="#FFCA28" /> },
-      { name: "TailwindCSS", icon: <SiTailwindcss color="#38BDF8" /> },
-      { name: "Framer Motion", icon: <SiFramer color="#0055FF" /> },
-    ],
-  },
-  {
-    id: "expiry-tracker",
-    name: "Expiry Tracker",
-    image: foodExpiryTracker,
-    description:
-      "An AI-powered app to track food expiry dates, helping users reduce waste and manage groceries. It sends reminders, suggests usage ideas, and provides a visual timeline for better pantry management.",
-    liveLink: "https://food-expiry-tracker-e6971.web.app/",
-    githubLink: "https://github.com/redoy49/food-expiry-tracker",
-    techStack: [
-      { name: "React", icon: <SiReact color="#61DAFB" /> },
-      { name: "OpenAI API", icon: <SiOpenai color="#412991" /> },
-      { name: "TailwindCSS", icon: <SiTailwindcss color="#38BDF8" /> },
-    ],
-  },
-  {
-    id: "fresh-farmers",
-    name: "Fresh Farmers",
-    image: freshFarmers,
-    description:
-      "A platform to connect farmers with local consumers, showcasing fresh produce and local farm goods. Includes marketplace features and responsive UI.",
-    liveLink: "https://subscription-box-df504.web.app/",
-    githubLink: "https://github.com/redoy49/fresh-farmers",
-    techStack: [
-      { name: "React", icon: <SiReact color="#61DAFB" /> },
-      { name: "TailwindCSS", icon: <SiTailwindcss color="#38BDF8" /> },
-      { name: "Shadcn/UI", icon: <SiShadcnui color="#000" /> },
-    ],
-  },
-];
 
 const Projects = () => {
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const { data, error } = await supabase
+        .from("projects")
+        .select("*") // Fetch all columns
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        console.error("Error fetching projects:", error);
+        setProjects([]);
+      } else {
+        setProjects(data || []);
+      }
+      setLoading(false);
+    };
+
+    fetchProjects();
+  }, []);
+
+  if (loading) return <p className="text-center mt-20">Loading...</p>;
+  if (projects.length === 0)
+    return <p className="text-center mt-20 text-red-500">No projects found.</p>;
+
   return (
     <section
       id="projects"
@@ -182,10 +47,10 @@ const Projects = () => {
             className="flex flex-col lg:flex-row items-center md:gap-8 bg-white shadow-md border border-gray-200 rounded-xl overflow-hidden"
           >
             {/* Project Image */}
-            {project.image && (
+            {project.image_url && (
               <div className="w-full lg:w-1/2">
                 <img
-                  src={project.image}
+                  src={project.image_url}
                   alt={project.name}
                   className="w-full h-full aspect-video object-contain p-2 md:px-4 rounded-md"
                 />
@@ -197,37 +62,50 @@ const Projects = () => {
               <h3 className="text-2xl lg:text-3xl font-semibold text-[#7081C8]">
                 {project.name}
               </h3>
-              <p className="text-gray-700 text-justify">{project.description}</p>
+              <p className="text-gray-700 text-justify">
+                {project.description}
+              </p>
 
-              {/* Tech Icons */}
-              <div className="flex flex-wrap gap-4 mt-6">
-                {project.techStack.map((tech, idx) => (
-                  <div key={idx} className="text-2xl" title={tech.name}>
-                    {tech.icon}
-                  </div>
-                ))}
-              </div>
+              {/* Tech Stack */}
+              {project.tech_stack && project.tech_stack.length > 0 && (
+                <div className="flex flex-wrap gap-3 mt-6">
+                  {project.tech_stack.map((tech, idx) => (
+                    <span
+                      key={idx}
+                      className="text-sm font-medium px-3 py-1.5 rounded-full bg-[#E0E7FF] text-[#3730A3] hover:bg-[#C7D2FE] transition cursor-default"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              )}
 
               <div className="flex flex-wrap justify-center lg:justify-start gap-2 sm:gap-4 mt-4 sm:mt-6">
-                <a
-                  href={project.liveLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-sm sm:text-base px-3 py-1.5 sm:px-4 sm:py-2 rounded-full font-medium transition bg-[#7081C8] hover:bg-[#5a6bb5] text-white"
-                >
-                  <FaLink size={14} className="text-base sm:text-lg" />
-                  Live Site
-                </a>
-                <a
-                  href={project.githubLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm sm:text-base px-3 py-1.5 sm:px-4 sm:py-2 rounded-full font-medium transition bg-gray-800 hover:bg-gray-700 text-white"
-                >
-                  GitHub Code
-                </a>
+                {project.live_link && (
+                  <a
+                    href={project.live_link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 text-sm sm:text-base px-3 py-1.5 sm:px-4 sm:py-2 rounded-full font-medium transition bg-[#7081C8] hover:bg-[#5a6bb5] text-white"
+                  >
+                    <FaLink size={14} className="text-base sm:text-lg" />
+                    Live Site
+                  </a>
+                )}
+
+                {project.github_link && (
+                  <a
+                    href={project.github_link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm sm:text-base px-3 py-1.5 sm:px-4 sm:py-2 rounded-full font-medium transition bg-gray-800 hover:bg-gray-700 text-white"
+                  >
+                    GitHub Code
+                  </a>
+                )}
+
                 <Link
-                  to={`/projects/${project.id}`}
+                  to={`/projects/${project.slug}`}
                   className="text-sm sm:text-base px-3 py-1.5 sm:px-4 sm:py-2 rounded-full transition border border-[#7081C8] text-[#7081C8] hover:bg-[#7081C8] hover:text-white"
                 >
                   View Details
@@ -242,4 +120,3 @@ const Projects = () => {
 };
 
 export default Projects;
-

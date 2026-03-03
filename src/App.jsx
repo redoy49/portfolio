@@ -8,29 +8,42 @@ import Navbar from "./components/Navbar";
 import Projects from "./components/Projects.jsx";
 import Skills from "./components/Skills";
 import ProjectDetails from "./components/ProjectDetails";
-import { Route, Routes } from "react-router";
+
+import Dashboard from "./dashboard/Dashboard";
+import DashboardAddProject from "./dashboard/AddProject";
+import ProjectTable from "./dashboard/ProjectTable";
+
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <Navbar></Navbar>
+      <Navbar />
+
       <Routes>
+        {/* Public Routes */}
         <Route
           path="/"
           element={
             <>
-              <Header></Header>
-              <About></About>
-              <Skills></Skills>
-              <Education></Education>
-              <Projects></Projects>
-              <Contact></Contact>
-              <Footer></Footer>
+              <Header />
+              <About />
+              <Skills />
+              <Education />
+              <Projects />
+              <Contact />
+              <Footer />
             </>
           }
         />
-        {/* Project details route */}
+
         <Route path="/projects/:name" element={<ProjectDetails />} />
+
+        {/* Dashboard Routes (no auth) */}
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route path="add-project" element={<DashboardAddProject />} />
+          <Route path="projects" element={<ProjectTable />} />
+        </Route>
       </Routes>
     </>
   );
