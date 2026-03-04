@@ -1,7 +1,7 @@
 ✅ FULL MODERN REACT STACK (2025) – Performance, SEO, Developer Experience
 
 
-<!-- Modern SaaS look
+<!-- Modern SaaS look Modern UI (no harsh borders)
 ✔ Smooth hover effects
 ✔ Better spacing
 ✔ Better loading UX
