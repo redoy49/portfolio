@@ -12,8 +12,7 @@ const Education = () => {
         Education
       </h2>
 
-      <div className="flex flex-col lg:flex-row items-center gap-12 bg-white shadow-md hover:shadow-lg transition duration-300 border border-gray-100 rounded-2xl p-6 md:p-12 w-full mx-auto">
-
+      <div className="flex flex-col lg:flex-row items-center gap-12 bg-white shadow-md hover:shadow-lg transition duration-300 border border-gray-100 rounded-2xl p-6 md:p-12">
         {/* Left: College Image */}
         <div className="w-full lg:w-1/2 flex justify-center">
           <img
@@ -26,26 +25,30 @@ const Education = () => {
         {/* Right: Education Info */}
         <div className="w-full lg:w-1/2 text-center lg:text-left">
           <h3 className="text-2xl md:text-3xl font-semibold text-[#7081C8] mb-4">
-            BBA, 3rd Year
+            Bachelor of Business Administration (BBA)
           </h3>
 
           <p className="text-lg text-gray-700 mb-2">
-            <span className="font-medium">Subject:</span> Accounting
+            <span className="font-medium">Major:</span> Accounting
           </p>
 
-          <p className="text-md text-gray-600 mb-4">
-            Narsingdi Government College
+          <p className="text-lg text-gray-700 mb-2">
+            <span className="font-medium">Institution:</span> Narsingdi
+            Government College
           </p>
 
-          <div className="inline-flex items-center justify-center lg:justify-start gap-2 text-sm md:text-base text-gray-500">
-            <FaUserGraduate className="text-base md:text-lg text-[#7081C8]" />
+          <p className="text-lg text-gray-700 mb-6">
+            <span className="font-medium">Session:</span> 2020–2021
+          </p>
+
+          <div className="inline-flex items-center gap-2 text-gray-600">
+            <FaUserGraduate className="text-[#7081C8] text-lg" />
             <span>
-              Expected Graduation:{" "}
-              <span className="font-semibold text-gray-700">2026</span>
+              <span className="font-medium">Graduation Year:</span>{" "}
+              <span className="font-semibold text-[#7081C8]">2026</span>
             </span>
           </div>
         </div>
-
       </div>
     </section>
   );
